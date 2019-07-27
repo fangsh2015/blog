@@ -62,6 +62,43 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-docker" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/blog/2019/07/26/docker/" class="article-date">
+  <time datetime="2019-07-25T16:28:24.291Z" itemprop="datePublished">2019-07-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li>dockerfile中，CMD和 ENTRPPOINT 的区别<br>可以通过 entrypoint 来执行命令 cmd为前面的命令输入参数    </li>
+</ol>
+<p>cmd<br>设置容器启动后默认执行的命令和参数 定义多个cmd，则执行最后一个。docker run 启动一个容器时指定了执行的命令，则Dockerfile文件中的CMD命令将会被忽略。<br>entrypoint 设置容器启动时运行的命令；让容器以应用程序或者服务的形式运行。entrypoint不会被忽略，全部会执行。</p>
+<p>run<br>执行命令并创建新的Image Layer</p>
+<p>RUN apg-get install -y vim<br>CMD echo “hello docker”<br>ENTRYPOINT echo “hello docker”</p>
+<p>FROM centos<br>ENV name DOCKER<br>ENTRYPOINT echo “hello $name”</p>
+<p>FROM centos<br>EVN name DOCKER<br>CMD echo “hello $name”</p>
+<p>sudo docker run -d –name test1 busybox /bin/sh -c “while true ; do sleep 3000; done”</p>
+<p>/bin/sh 相当于 /bin/bash –posix<br>positx特定规范为：当某行代码出错时，不继续往下执行</p>
+<p>启动容器时 -e为容器设置环境变量<br>dockr run -e java_home=xxxxx –name test_java -d java</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/fangsh2015/2019/07/26/docker/" data-id="cjylkebv60001nb8xm0nejyen" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Vagrant使用" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/blog/2019/07/26/Vagrant使用/" class="article-date">
@@ -87,7 +124,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://github.com/fangsh2015/2019/07/26/Vagrant使用/" data-id="cjyiw1plh0000b28xdlyitnqe" class="article-share-link">Share</a>
+      <a data-url="https://github.com/fangsh2015/2019/07/26/Vagrant使用/" data-id="cjylkebv20000nb8x1b8xw18w" class="article-share-link">Share</a>
       
       
     </footer>
@@ -136,7 +173,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://github.com/fangsh2015/2019/07/26/hello-world/" data-id="cjyiw1pll0001b28xdb0ijuk1" class="article-share-link">Share</a>
+      <a data-url="https://github.com/fangsh2015/2019/07/26/hello-world/" data-id="cjylkebv80002nb8x4hqdnnz2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -175,6 +212,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/blog/2019/07/26/docker/">(no title)</a>
+          </li>
         
           <li>
             <a href="/blog/2019/07/26/Vagrant使用/">(no title)</a>

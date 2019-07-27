@@ -7,17 +7,17 @@
   
   <title>Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Vagrant使用 使用步骤 安装vagrant ：https://www.vagrantup.com/  加载相应的box  创建虚拟机">
+  <meta name="description" content="dockerfile中，CMD和 ENTRPPOINT 的区别可以通过 entrypoint 来执行命令 cmd为前面的命令输入参数      cmd设置容器启动后默认执行的命令和参数 定义多个cmd，则执行最后一个。docker run 启动一个容器时指定了执行的命令，则Dockerfile文件中的CMD命令将会被忽略。entrypoint 设置容器启动时运行的命令；让容器以应用程序或者服务的">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="https://github.com/fangsh2015/2019/07/26/Vagrant使用/index.html">
+<meta property="og:url" content="https://github.com/fangsh2015/2019/07/26/docker/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Vagrant使用 使用步骤 安装vagrant ：https://www.vagrantup.com/  加载相应的box  创建虚拟机">
+<meta property="og:description" content="dockerfile中，CMD和 ENTRPPOINT 的区别可以通过 entrypoint 来执行命令 cmd为前面的命令输入参数      cmd设置容器启动后默认执行的命令和参数 定义多个cmd，则执行最后一个。docker run 启动一个容器时指定了执行的命令，则Dockerfile文件中的CMD命令将会被忽略。entrypoint 设置容器启动时运行的命令；让容器以应用程序或者服务的">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-25T16:25:24.633Z">
+<meta property="og:updated_time" content="2019-07-25T16:28:24.291Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo">
-<meta name="twitter:description" content="Vagrant使用 使用步骤 安装vagrant ：https://www.vagrantup.com/  加载相应的box  创建虚拟机">
+<meta name="twitter:description" content="dockerfile中，CMD和 ENTRPPOINT 的区别可以通过 entrypoint 来执行命令 cmd为前面的命令输入参数      cmd设置容器启动后默认执行的命令和参数 定义多个cmd，则执行最后一个。docker run 启动一个容器时指定了执行的命令，则Dockerfile文件中的CMD命令将会被忽略。entrypoint 设置容器启动时运行的命令；让容器以应用程序或者服务的">
   
     <link rel="alternate" href="/blog/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -64,10 +64,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-Vagrant使用" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-docker" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/blog/2019/07/26/Vagrant使用/" class="article-date">
-  <time datetime="2019-07-25T16:25:24.633Z" itemprop="datePublished">2019-07-26</time>
+    <a href="/blog/2019/07/26/docker/" class="article-date">
+  <time datetime="2019-07-25T16:28:24.291Z" itemprop="datePublished">2019-07-26</time>
 </a>
     
   </div>
@@ -76,20 +76,22 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Vagrant使用</p>
-<h1 id="使用步骤"><a href="#使用步骤" class="headerlink" title="使用步骤"></a>使用步骤</h1><ol>
-<li><p>安装vagrant ：<a href="https://www.vagrantup.com/" target="_blank" rel="noopener">https://www.vagrantup.com/</a></p>
-</li>
-<li><p>加载相应的box</p>
-</li>
-<li><p>创建虚拟机</p>
-</li>
+        <ol>
+<li>dockerfile中，CMD和 ENTRPPOINT 的区别<br>可以通过 entrypoint 来执行命令 cmd为前面的命令输入参数    </li>
 </ol>
+<p>cmd<br>设置容器启动后默认执行的命令和参数 定义多个cmd，则执行最后一个。docker run 启动一个容器时指定了执行的命令，则Dockerfile文件中的CMD命令将会被忽略。<br>entrypoint 设置容器启动时运行的命令；让容器以应用程序或者服务的形式运行。entrypoint不会被忽略，全部会执行。</p>
+<p>run<br>执行命令并创建新的Image Layer</p>
+<p>RUN apg-get install -y vim<br>CMD echo “hello docker”<br>ENTRYPOINT echo “hello docker”</p>
+<p>FROM centos<br>ENV name DOCKER<br>ENTRYPOINT echo “hello $name”</p>
+<p>FROM centos<br>EVN name DOCKER<br>CMD echo “hello $name”</p>
+<p>sudo docker run -d –name test1 busybox /bin/sh -c “while true ; do sleep 3000; done”</p>
+<p>/bin/sh 相当于 /bin/bash –posix<br>positx特定规范为：当某行代码出错时，不继续往下执行</p>
+<p>启动容器时 -e为容器设置环境变量<br>dockr run -e java_home=xxxxx –name test_java -d java</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://github.com/fangsh2015/2019/07/26/Vagrant使用/" data-id="cjylkebv20000nb8x1b8xw18w" class="article-share-link">Share</a>
+      <a data-url="https://github.com/fangsh2015/2019/07/26/docker/" data-id="cjylkebv60001nb8xm0nejyen" class="article-share-link">Share</a>
       
       
     </footer>
@@ -98,19 +100,10 @@
     
 <nav id="article-nav">
   
-    <a href="/blog/2019/07/26/docker/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          (no title)
-        
-      </div>
-    </a>
   
-  
-    <a href="/blog/2019/07/26/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/blog/2019/07/26/Vagrant使用/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Hello World</div>
+      <div class="article-nav-title"></div>
     </a>
   
 </nav>
